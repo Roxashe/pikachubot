@@ -41,9 +41,11 @@ class Bot(commands.Bot):
         await self.wait_until_ready()
         self.start_time = datetime.datetime.utcnow()
 
+
     async def get_prefix_(self, bot, message):
         prefix = ['!']
         return commands.when_mentioned_or(*prefix)(bot, message)
+
 
     async def load_all_extensions(self):
         await self.wait_until_ready()
@@ -58,6 +60,7 @@ class Bot(commands.Bot):
                 print(f'failed to load extension {error}')
             print('-' * 10)
 
+
     async def on_ready(self):
         print('-' * 10)
         self.app_info = await self.application_info()
@@ -67,14 +70,6 @@ class Bot(commands.Bot):
               f'Owner: {self.app_info.owner}\n')
         print('-' * 10)    
 
-    async def on_raw_reaction_add(self, payload):
-        channel = self.get_channel(payload.channel_id)
-        message = await channel.fetch_message(payload.message_id)
-        print (message.content)
-        print(str(payload.emoji.name))
-        if payload.emoji.name == u'\u274c':
-            await message.delete()
-
 
     async def on_message(self, message):
         if message.author.bot:
@@ -83,10 +78,6 @@ class Bot(commands.Bot):
         print(message.content)
         await self.process_commands(message)
 
- 
-    
-
-        
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)

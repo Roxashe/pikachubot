@@ -49,7 +49,6 @@ class pika(commands.Cog):
         if "pika" in message.content.lower():
             await message.channel.send(pikapika)
 
-        
 
     @commands.command()
     async def ping(self, ctx):
