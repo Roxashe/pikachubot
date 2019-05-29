@@ -36,6 +36,14 @@ class pika(commands.Cog):
     async def pikawoah(self, ctx):
         await ctx.send('https://i.kym-cdn.com/photos/images/facebook/001/430/795/975.jpg')
 
+    @commands.command()
+    async def pikapride(self, ctx):
+        await ctx.send('https://media.discordapp.net/attachments/520708656216539165/583251464944746496/pikapride.jpg')
+    
+    @commands.command()
+    async def pikasad(self, ctx):
+        await ctx.send('https://cdn.discordapp.com/attachments/520708656216539165/583251480363139072/pikasad.jpg')
+
 
     @commands.Cog.listener()
     async def on_message(self, message):
